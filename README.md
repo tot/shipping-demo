@@ -22,6 +22,8 @@ bun dev
 
 5. Once ready to submit order, press the "Submit" button in the dialog to be redirected to the completed order page.
 
+> To check out the responsiveness for the app, change the browser viewport or resize the page to see the layout update.
+
 ## Frontend Stack
 
 -   Next.js
