@@ -14,14 +14,6 @@ import ConfirmationDialog from "./ConfirmationDialog"
 import { useAtom } from "jotai"
 import { cartAtom } from "@/store"
 
-// const productsSchema = z.object({
-//     name: z.string(),
-//     price: z.number().positive(),
-//     quantity: z.number().positive(),
-//     style: z.string(),
-//     image: z.string().url(),
-// })
-
 const formSchema = z.object({
     instagramHandle: z
         .string({
@@ -81,32 +73,7 @@ const ShippingForm = () => {
     const [cartItems] = useAtom(cartAtom)
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
-        // defaultValues: {
-        //     instagramHandle: "",
-        //     email: "",
-        //     confirmEmail: "",
-        //     firstName: "",
-        //     lastName: "",
-        //     address1: "",
-        //     address2: "",
-        //     city: "",
-        //     zipcode: "",
-        //     products: [],
-        // },
-
-        // defaultValues: {
-        //     instagramHandle: "markhamil",
-        //     email: "dkwk2dw@gmail.com",
-        //     confirmEmail: "dkwk2dw@gmail.com",
-        //     firstName: "Thomas",
-        //     lastName: "Tremt",
-        //     address1: "8832 Address St",
-        //     address2: "Apt C",
-        //     city: "Fairfax",
-        //     zipcode: "22032",
-        //     state: "Virginia",
-        //     products: [],
-        // },
+        mode: "onTouched",
     })
 
     function handleSubmit() {
@@ -117,9 +84,7 @@ const ShippingForm = () => {
 
     return (
         <Form {...form}>
-            <form
-                // onSubmit={form.handleSubmit(onSubmit)}
-                className="space-y-2 grid grid-cols-4 gap-3">
+            <form className="space-y-2 grid grid-cols-4 gap-3">
                 <FormField
                     control={form.control}
                     name="instagramHandle"
